@@ -232,12 +232,12 @@ function Order() {
         prev.map((item) =>
           item.productId === product._id
             ? {
-                ...item,
-                quantity: newQty,
-                totalMrp: (price * newQty).toFixed(2),
-                discountRupee: newDiscountRupee.toFixed(2),
-                total: (price * newQty - newDiscountRupee).toFixed(2),
-              }
+              ...item,
+              quantity: newQty,
+              totalMrp: (price * newQty).toFixed(2),
+              discountRupee: newDiscountRupee.toFixed(2),
+              total: (price * newQty - newDiscountRupee).toFixed(2),
+            }
             : item
         )
       );
@@ -483,9 +483,8 @@ function Order() {
                     <button
                       type="button"
                       key={cat._id}
-                      className={`order-pill ${
-                        selectedCategory === cat.name ? "active" : ""
-                      }`}
+                      className={`order-pill ${selectedCategory === cat.name ? "active" : ""
+                        }`}
                       onClick={() => setSelectedCategory(cat.name)}
                     >
                       {cat.name}
@@ -662,7 +661,7 @@ function Order() {
                                 <input
                                   type="text"
                                   placeholder="0"
-                                  value={item.discountPercent}
+                                  value={item.discountPercent || ""}
                                   onChange={(e) =>
                                     updateCartDiscount(item.productId, "percent", e.target.value)
                                   }
@@ -673,7 +672,7 @@ function Order() {
                                 <input
                                   type="text"
                                   placeholder="0"
-                                  value={item.discountRupee}
+                                  value={item.discountRupee || ""}
                                   onChange={(e) =>
                                     updateCartDiscount(item.productId, "rupee", e.target.value)
                                   }
@@ -1192,10 +1191,12 @@ function Order() {
         }
 
         .order-qty-stepper button {
-          background: #f3f4f6;
+          background: #fb923c;
           border: none;
           padding: 6px 8px;
           cursor: pointer;
+          margin-left: 5px;
+          margin-right: 5px;
         }
 
         .order-qty-stepper button:hover {
